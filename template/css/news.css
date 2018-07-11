@@ -1,0 +1,10 @@
+.resultTitle{
+	/*color:red;*/
+}
+a:hover {
+    text-decoration: none;
+}
+
+.panel{
+	cursor:pointer
+}

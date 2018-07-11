@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta charset="utf-8">
+		<title>新闻舆情分析系统</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/home.css"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui@1.4.13/lib/theme-default/index.css">
+		<link rel="stylesheet" type="text/css" href="css/pagination.css"/>
+	</head>
+	<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/" >高校新闻舆情分析系统</a><a class="navbar-brand" href="/" style="color:red">(开发测试中)</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/">主页</a></li>
+					<li><a href="/statistics">数据统计</a></li>
+					<li class="active"><a href="/medias">媒体统计</a></li>
+					<li><a href="/detail">高校详情</a></li>
+					<li><a href="/analyze">在线分析</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" id="myAccount">show account here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#" id="logout">logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.nav-collapse -->
+
+		</div><!-- /.container-fluid -->
+	</nav><br><br>
+
+
+	<div class="container">
+		<div name="part-1">
+			<div class="page-header" >
+				<h2 style="text-align: center;color: #4285F4">媒体报道数量排名</h2>
+			</div>
+	
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<p>选择显示个数</p>
+					<select id="selectNum-sentiRank" name="selectNum" style="width: 80px;height:30px;">
+					</select>
+				</div>
+				<div class="col-md-3">
+					<p>选择学校</p>
+					<select id="selectUni-sentiRank" name="selectUni" style="width: 200px;height:30px;">
+					</select>
+				</div>
+				<div class="col-md-3">
+					<p>选择感情色彩</p>
+					<select id="selectSenti-sentiRank" name="selectSenti" style="width: 200px;height:30px;">
+						<option value="1">正面报道</option>
+						<option value="0">中性报道</option>
+						<option value="-1">负面报道</option>
+					</select>
+				</div>
+				<div class="col-md-1">
+					<p style="color: transparent">查询</p>
+					<button id="query-sentiRank" name="query" style="width: 80px;height:30px;">查询</button>
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="sentimentRankChart" style="width: 83%;height:400px;"></div>
+			</div>
+		</div>
+
+		<hr>
+		
+		<div name="part-2">
+			<div class="page-header" >
+				<h2 style="text-align: center;color: #4285F4">媒体影响力排名</h2>
+			</div>
+	
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-3">
+					<p>选择显示个数</p>
+					<select id="selectNum-influRank" name="selectNum" style="width: 80px;height:30px;">
+					</select>
+				</div>
+				<div class="col-md-3">
+					<p>选择感情色彩</p>
+					<select id="selectSenti-influRank" name="selectSenti" style="width: 200px;height:30px;">
+						<option value="all">综合影响力</option>
+						<option value="1">正面影响力</option>
+						<option value="0">中性影响力</option>
+						<option value="-1">负面影响力</option>
+					</select>
+				</div>
+				<div class="col-md-1">
+					<p style="color: transparent">查询</p>
+					<button id="query-influRank" name="query" style="width: 80px;height:30px;">查询</button>
+				</div>
+			</div>
+	
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="influenceRankChart" style="width: 83%;height:400px;"></div>
+			</div>
+		</div>
+
+		<hr>
+
+	</div>
+		
+	<div id="app">
+		{{ info }}
+	</div>
+
+
+
+	</br></br></br></br></br></br><!-- </br></br> -->
+
+
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+		<div class="container" style="text-align:center">
+			<img alt="Iotlab logo" src="img/iotlab-logo.png">
+			<a id="link-iotlab" href="http://222.44.90.83:3000/lab">航运信息技术研究所 © 2013 - 2017</a>
+		</div>
+	</nav>
+
+	</body>
+	<script type="text/javascript" src="js/lib/jquery1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="js/lib/axios.min.js"></script>
+	<script type="text/javascript" src="js/lib/echarts.min.js"></script>
+	<script type="text/javascript" src="js/lib/shine.js"></script>
+	<script src="https://unpkg.com/element-ui@1.3.1/lib/index.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/sentiment_rank_chart.js"></script>
+	<script type="text/javascript" src="js/influence_rank_chart.js"></script>
+
+</html>
