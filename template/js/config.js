@@ -131,7 +131,7 @@ var ipAddress = {
 };
 
 var djangoIpAddress = {
-	addrHost:'http://127.0.0.1',
+	addrHost:'http://188.166.65.59',
 	addrPort: '8000'
 };
 
