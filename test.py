@@ -8,17 +8,21 @@ from sklearn import metrics
 from sklearn.grid_search import GridSearchCV
 import numpy as np
 
+
+# 用来测试的,并无他用
+
+
 def test1():
     MONGO_HOST = "188.166.65.59"
     MONGO_PORT = 27017
-    MONGO_DB = "ir"
+    MONGO_DB = "NewsPOA"
     MONGO_USER = "userAdmin"
     MONGO_PASS = "Ad1310724518"
     connection = MongoClient(MONGO_HOST, MONGO_PORT)
     db = connection[MONGO_DB]
     print(db)
     db.authenticate(MONGO_USER, MONGO_PASS)
-    db = db.get_collection("newsNumber").find({})
+    db = db.get_collection("newslist").find({})
     print (list(db))
 
 def test2():
@@ -116,4 +120,5 @@ def test2():
     for param_name in sorted(parameters.keys()):
         print("%s: %r" % (param_name, gs_clf.best_params_[param_name]))
 
-test1()
+if __name__ == "__main__":
+    test1()
